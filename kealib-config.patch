@@ -1,0 +1,55 @@
+--- kealib-1.4.4/trunk/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
++++ kealib-1.4.4/trunk/CMakeLists.txt	2016-03-20 10:31:35.276684756 +0100
+@@ -21,7 +21,7 @@
+ endif()
+ 
+ set (PROJECT_BINARY_DIR bin)
+-set (PROJECT_LIBRARY_DIR lib)
++set (PROJECT_LIBRARY_DIR lib${LIB_SUFFIX})
+ set (PROJECT_SOURCE_DIR src)
+ set (PROJECT_HEADER_DIR include)
+ set (PROJECT_TOOLS_DIR tools)
+--- kealib-1.4.4/trunk/src/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
++++ kealib-1.4.4/trunk/src/CMakeLists.txt	2016-03-20 10:32:17.330016324 +0100
+@@ -48,6 +48,6 @@
+ 
+ ###############################################################################
+ # Installation 
+-install (TARGETS ${LIBKEA_LIB_NAME} DESTINATION lib)
++install (TARGETS ${LIBKEA_LIB_NAME} DESTINATION lib${LIB_SUFFIX})
+ install (FILES ${LIBKEA_H} DESTINATION include/libkea)
+-###############################################################################
+\ No newline at end of file
++###############################################################################
+--- kealib-1.4.4/trunk/tools/kea-config.in.orig	2015-01-08 08:48:57.000000000 +0100
++++ kealib-1.4.4/trunk/tools/kea-config.in	2016-03-20 10:33:47.626679202 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/bin/sh
+ 
+ usage()
+ {
+@@ -40,10 +40,10 @@
+     echo -n "-I@CMAKE_INSTALL_PREFIX@/@PROJECT_HEADER_DIR@ "
+       ;;
+     --libs)
+-      echo -n "-L@CMAKE_INSTALL_PREFIX@/@PROJECT_LIBRARY_DIR@ -l@LIBKEA_LIB_NAME@ "
++      echo -n "-l@LIBKEA_LIB_NAME@ "
+       ;;
+     --ldflags)
+-      echo -n "@CMAKE_INSTALL_PREFIX@/@PROJECT_LIBRARY_DIR@ "
++      echo -n "-L@CMAKE_INSTALL_PREFIX@/@PROJECT_LIBRARY_DIR@ "
+       ;;
+     --includes)
+       echo -n "@CMAKE_INSTALL_PREFIX@/@PROJECT_HEADER_DIR@ "
+--- kealib-1.4.4/trunk/gdal/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
++++ kealib-1.4.4/trunk/gdal/CMakeLists.txt	2016-03-20 11:17:02.653236966 +0100
+@@ -45,5 +45,5 @@
+ 
+ ###############################################################################
+ # Installation 
+-install (TARGETS ${LIBKEA_GDAL_DRIVER} DESTINATION gdalplugins)
+-###############################################################################
+\ No newline at end of file
++install (TARGETS ${LIBKEA_GDAL_DRIVER} DESTINATION lib${LIB_SUFFIX}/gdalplugins)
++###############################################################################
