@@ -42,13 +42,13 @@
        ;;
      --includes)
        echo -n "@CMAKE_INSTALL_PREFIX@/@PROJECT_HEADER_DIR@ "
---- kealib-1.4.4/trunk/gdal/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
-+++ kealib-1.4.4/trunk/gdal/CMakeLists.txt	2016-03-20 11:17:02.653236966 +0100
+--- kealib-1.4.6/trunk/gdal/CMakeLists.txt.orig	2016-04-21 20:58:02.218148230 +0200
++++ kealib-1.4.6/trunk/gdal/CMakeLists.txt	2016-04-21 21:08:21.174788927 +0200
 @@ -45,5 +45,5 @@
  
  ###############################################################################
  # Installation 
--install (TARGETS ${LIBKEA_GDAL_DRIVER} DESTINATION gdalplugins)
+-install (TARGETS ${LIBKEA_GDAL_DRIVER} DESTINATION lib/gdalplugins)
 -###############################################################################
 \ No newline at end of file
 +install (TARGETS ${LIBKEA_GDAL_DRIVER} DESTINATION lib${LIB_SUFFIX}/gdalplugins)
