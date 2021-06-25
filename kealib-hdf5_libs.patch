@@ -1,0 +1,16 @@
+--- kealib-1.4.14/CMakeLists.txt.orig	2020-11-27 02:19:08.000000000 +0100
++++ kealib-1.4.14/CMakeLists.txt	2021-06-25 16:26:33.890160007 +0200
+@@ -139,9 +139,10 @@
+     string(CONCAT HDF5_LIBRARIES_LIBTOOL ${HDF5_LIBRARIES_LIBTOOL} " -L" ${dir_name})
+ endforeach(dir_name)
+ 
+-foreach(lib_name ${HDF5_LIBRARIES_NAMES})
+-    string(CONCAT HDF5_LIBRARIES_LIBTOOL ${HDF5_LIBRARIES_LIBTOOL} " -l" ${lib_name})
+-endforeach(lib_name)
++#foreach(lib_name ${HDF5_LIBRARIES_NAMES})
++#    string(CONCAT HDF5_LIBRARIES_LIBTOOL ${HDF5_LIBRARIES_LIBTOOL} " -l" ${lib_name})
++#endforeach(lib_name)
++set(HDF5_LIBRARIES_LIBTOOL " -lhdf5_cpp -lhdf5_hl_cpp ")
+ message(STATUS "HDF5_LIBRARIES_LIBTOOL ${HDF5_LIBRARIES_LIBTOOL}")
+ 
+ set(HDF5_INCLUDE_LIBTOOL)

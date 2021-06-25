@@ -6,12 +6,13 @@ Summary:	KEALib - HDF5 based raster file format library
 Summary(pl.UTF-8):	KEALib - biblioteka rastrowego formatu plików opartego na HDF5
 Name:		kealib
 Version:	1.4.14
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	https://github.com/ubarsc/kealib/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	494e9efc0c26f904c02c31fe2e668885
 Patch0:		%{name}-config.patch
+Patch1:		%{name}-hdf5_libs.patch
 URL:		http://kealib.org/
 BuildRequires:	cmake >= 2.6.0
 %{?with_gdal:BuildRequires:	gdal-devel}
@@ -77,6 +78,7 @@ Wtyczka KEA do biblioteki GDAL.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake . \
