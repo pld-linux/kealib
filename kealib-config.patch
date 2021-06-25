@@ -1,28 +1,29 @@
---- kealib-1.4.4/trunk/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
-+++ kealib-1.4.4/trunk/CMakeLists.txt	2016-03-20 10:31:35.276684756 +0100
+--- kealib-1.4.4/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
++++ kealib-1.4.4/CMakeLists.txt	2016-03-20 10:31:35.276684756 +0100
 @@ -21,7 +21,7 @@
- endif()
+ ENDIF()
  
  set (PROJECT_BINARY_DIR bin)
 -set (PROJECT_LIBRARY_DIR lib)
 +set (PROJECT_LIBRARY_DIR lib${LIB_SUFFIX})
- set (PROJECT_SOURCE_DIR src)
+ set (PROJECT_TEST_DIR tests)
  set (PROJECT_HEADER_DIR include)
  set (PROJECT_TOOLS_DIR tools)
---- kealib-1.4.4/trunk/src/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
-+++ kealib-1.4.4/trunk/src/CMakeLists.txt	2016-03-20 10:32:17.330016324 +0100
-@@ -48,6 +48,6 @@
- 
+--- kealib-1.4.4/src/CMakeLists.txt.orig	2015-01-08 08:48:57.000000000 +0100
++++ kealib-1.4.4/src/CMakeLists.txt	2016-03-20 10:32:17.330016324 +0100
+@@ -48,8 +48,8 @@
+ # Install
+ install (TARGETS ${LIBKEA_LIB_NAME}
+           RUNTIME DESTINATION bin
+-          LIBRARY DESTINATION lib
+-          ARCHIVE DESTINATION lib)
++          LIBRARY DESTINATION lib${LIB_SUFFIX}
++          ARCHIVE DESTINATION lib${LIB_SUFFIX})
+ install(FILES ${LIBKEA_H} ${CMAKE_CURRENT_BINARY_DIR}/include/libkea/kea_export.h
+         DESTINATION include/libkea)
  ###############################################################################
- # Installation 
--install (TARGETS ${LIBKEA_LIB_NAME} DESTINATION lib)
-+install (TARGETS ${LIBKEA_LIB_NAME} DESTINATION lib${LIB_SUFFIX})
- install (FILES ${LIBKEA_H} DESTINATION include/libkea)
--###############################################################################
-\ No newline at end of file
-+###############################################################################
---- kealib-1.4.4/trunk/tools/kea-config.in.orig	2015-01-08 08:48:57.000000000 +0100
-+++ kealib-1.4.4/trunk/tools/kea-config.in	2016-03-20 10:33:47.626679202 +0100
+--- kealib-1.4.4/tools/kea-config.in.orig	2015-01-08 08:48:57.000000000 +0100
++++ kealib-1.4.4/tools/kea-config.in	2016-03-20 10:33:47.626679202 +0100
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/bin/sh
@@ -42,14 +43,14 @@
        ;;
      --includes)
        echo -n "@CMAKE_INSTALL_PREFIX@/@PROJECT_HEADER_DIR@ "
---- kealib-1.4.6/trunk/gdal/CMakeLists.txt.orig	2016-04-21 20:58:02.218148230 +0200
-+++ kealib-1.4.6/trunk/gdal/CMakeLists.txt	2016-04-21 21:08:21.174788927 +0200
-@@ -45,5 +45,5 @@
- 
- ###############################################################################
+--- kealib-1.4.6/gdal/CMakeLists.txt.orig	2016-04-21 20:58:02.218148230 +0200
++++ kealib-1.4.6/gdal/CMakeLists.txt	2016-04-21 21:08:21.174788927 +0200
+@@ -45,7 +45,7 @@
  # Installation 
+ # Always install into the prefix
+ # to keep compatibility with previous versions
 -install (TARGETS ${LIBKEA_GDAL_DRIVER} DESTINATION lib/gdalplugins)
--###############################################################################
-\ No newline at end of file
 +install (TARGETS ${LIBKEA_GDAL_DRIVER} DESTINATION lib${LIB_SUFFIX}/gdalplugins)
-+###############################################################################
+ 
+ # Then look for existing plugins directories
+ set(GDAL_PLUGIN_DIRS)
