@@ -17,6 +17,7 @@ BuildRequires:	cmake >= 2.6.0
 %{?with_gdal:BuildRequires:	gdal-devel}
 BuildRequires:	hdf5-c++-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	rpmbuild(macros) >= 1.605
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
